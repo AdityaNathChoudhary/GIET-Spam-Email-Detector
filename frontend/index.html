@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MailGuard — Email &amp; SMS Spam Detector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Decorative soft blue corner shapes -->
+  <div class="bg-decoration" aria-hidden="true">
+    <svg class="blob blob-top-left" viewBox="0 0 260 260" fill="none">
+      <path
+        d="M0 0H210C185 52 162 85 118 112C74 139 46 185 0 230V0Z"
+        fill="url(#gradTopLeft)"
+      />
+      <defs>
+        <linearGradient id="gradTopLeft" x1="0" y1="0" x2="210" y2="230" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#DBEAFE" stop-opacity="0.88" />
+          <stop offset="1" stop-color="#EFF6FF" stop-opacity="0.25" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <svg class="blob blob-top-right" viewBox="0 0 320 280" fill="none">
+      <path
+        d="M110 0H320V220C275 205 245 170 230 128C215 86 170 42 110 0Z"
+        fill="url(#gradTopRight)"
+      />
+      <circle cx="176" cy="146" r="14" fill="#DBEAFE" fill-opacity="0.7" />
+      <defs>
+        <linearGradient id="gradTopRight" x1="320" y1="0" x2="140" y2="210" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#DBEAFE" stop-opacity="0.92" />
+          <stop offset="1" stop-color="#E0E7FF" stop-opacity="0.25" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <svg class="blob blob-bottom-left" viewBox="0 0 280 220" fill="none">
+      <path
+        d="M0 40C48 72 82 118 135 148C188 178 228 192 265 220H0V40Z"
+        fill="url(#gradBottomLeft)"
+      />
+      <defs>
+        <linearGradient id="gradBottomLeft" x1="0" y1="220" x2="220" y2="80" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#DBEAFE" stop-opacity="0.72" />
+          <stop offset="1" stop-color="#EFF6FF" stop-opacity="0.18" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <svg class="blob blob-bottom-right" viewBox="0 0 380 300" fill="none">
+      <path
+        d="M80 300C120 250 155 210 218 195C281 180 315 125 380 55V300H80Z"
+        fill="url(#gradBottomRight)"
+      />
+      <defs>
+        <linearGradient id="gradBottomRight" x1="380" y1="300" x2="120" y2="100" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#C7D2FE" stop-opacity="0.75" />
+          <stop offset="1" stop-color="#DBEAFE" stop-opacity="0.25" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+
+  <main class="page-wrapper">
+    <!-- Hero Section -->
+    <header class="hero">
+      <div class="logo-mark" aria-hidden="true">
+        <svg class="logo-svg" viewBox="0 0 140 76" fill="none">
+          <!-- Left radiating strokes -->
+          <line x1="20" y1="24" x2="31" y2="29" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+          <line x1="16" y1="38" x2="28" y2="38" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+          <line x1="20" y1="52" x2="31" y2="47" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+
+          <!-- Right radiating strokes -->
+          <line x1="120" y1="24" x2="109" y2="29" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+          <line x1="124" y1="38" x2="112" y2="38" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+          <line x1="120" y1="52" x2="109" y2="47" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round" />
+
+          <!-- Envelope -->
+          <rect
+            x="40"
+            y="14"
+            width="60"
+            height="42"
+            rx="6"
+            fill="#FFFFFF"
+            stroke="#2563EB"
+            stroke-width="3"
+          />
+          <path
+            d="M42 18L70 39L98 18"
+            stroke="#2563EB"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <!-- Shield badge overlay -->
+          <path
+            d="M95 36L107 41V50.5C107 58.2 101.8 64.9 95 67C88.2 64.9 83 58.2 83 50.5V41L95 36Z"
+            fill="#2563EB"
+            stroke="#F9FBFF"
+            stroke-width="3"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M89.8 51.2L93.4 54.8L100.5 47.7"
+            stroke="#FFFFFF"
+            stroke-width="2.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+
+      <h1 class="brand-title">
+        <span class="brand-mail">Mail</span><span class="brand-guard">Guard</span>
+      </h1>
+      <p class="brand-subtitle">Email &amp; SMS Spam Detector</p>
+      <p class="brand-description">
+        Paste your email or SMS message below and let AI predict if it's spam or safe.
+      </p>
+    </header>
+
+    <!-- Message Input Card -->
+    <section class="card input-card" aria-label="Message Analyzer">
+      <form id="spamForm" novalidate>
+        <label class="field-label" for="messageInput">
+          <svg class="label-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#2563EB" stroke-width="2" />
+            <path d="M4 7L12 13L20 7" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span>Message</span>
+        </label>
+
+        <textarea
+          id="messageInput"
+          class="message-textarea"
+          placeholder="Enter your email or SMS message here..."
+          maxlength="2000"
+          rows="5"
+        ></textarea>
+
+        <div class="textarea-footer">
+          <span id="errorBanner" class="inline-error" role="alert" hidden></span>
+          <span id="charCounter" class="char-counter">0 / 2000</span>
+        </div>
+
+        <div class="actions">
+          <button id="checkBtn" class="primary-btn" type="submit">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2.2" />
+              <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+            <span class="btn-spinner" hidden aria-hidden="true"></span>
+            <span id="btnLabel">Check for Spam</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Prediction Result Card -->
+    <section
+      id="resultCard"
+      class="card result-card"
+      aria-live="polite"
+      hidden
+    >
+      <div class="result-status">
+        <div id="resultBadge" class="result-badge" aria-hidden="true">
+          <!-- Checkmark shield (Ham) -->
+          <svg id="hamIcon" class="shield-svg" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 2.5L4.5 5.6V11.4C4.5 16.5 7.7 21.1 12 22.5C16.3 21.1 19.5 16.5 19.5 11.4V5.6L12 2.5Z"
+              fill="currentColor"
+            />
+            <path
+              d="M8.8 12.2L11 14.4L15.4 10"
+              stroke="#FFFFFF"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <!-- Alert shield (Spam) -->
+          <svg id="spamIcon" class="shield-svg" viewBox="0 0 24 24" fill="none" hidden>
+            <path
+              d="M12 2.5L4.5 5.6V11.4C4.5 16.5 7.7 21.1 12 22.5C16.3 21.1 19.5 16.5 19.5 11.4V5.6L12 2.5Z"
+              fill="currentColor"
+            />
+            <path
+              d="M12 8.2V12.8"
+              stroke="#FFFFFF"
+              stroke-width="2.2"
+              stroke-linecap="round"
+            />
+            <circle cx="12" cy="16" r="1.2" fill="#FFFFFF" />
+          </svg>
+        </div>
+
+        <div class="result-copy">
+          <h2 id="resultHeading" class="result-heading">Ham (Not Spam)</h2>
+          <p id="resultSubtext" class="result-subtext">This message looks safe.</p>
+        </div>
+      </div>
+
+      <div class="result-divider" aria-hidden="true"></div>
+
+      <div class="confidence-block">
+        <span class="confidence-label">Confidence Score</span>
+        <div id="confidenceValue" class="confidence-value">95.8%</div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          id="progressTrack"
+        >
+          <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

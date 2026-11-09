@@ -167,7 +167,7 @@ def main():
 
     save_artifacts(best_model, vectorizer, MODEL_PATH, VECTORIZER_PATH)
 
-    print(f"\n✅  Training complete. Best model: {best_name}")
+    print(f"\n[OK] Training complete. Best model: {best_name}")
     print(f"    Model saved to  : {MODEL_PATH}")
     print(f"    Vectorizer saved: {VECTORIZER_PATH}")
 

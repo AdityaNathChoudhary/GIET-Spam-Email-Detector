@@ -11,8 +11,11 @@ Usage:
 """
 
 import logging
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from predict import predict
@@ -23,10 +26,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+FRONTEND_DIR = Path(__file__).resolve().parent / "frontend"
+
 app = FastAPI(
     title="Email Spam Detection API",
     description="Classify email / SMS text as spam or ham.",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -45,6 +57,28 @@ class PredictResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str
+
+
+# ---------------------------------------------------------------------------
+# Frontend routes
+# ---------------------------------------------------------------------------
+
+@app.get("/", include_in_schema=False)
+async def serve_index():
+    """Serve the MailGuard web frontend."""
+    return FileResponse(FRONTEND_DIR / "index.html")
+
+
+@app.get("/style.css", include_in_schema=False)
+async def serve_style():
+    """Serve frontend stylesheet."""
+    return FileResponse(FRONTEND_DIR / "style.css", media_type="text/css")
+
+
+@app.get("/script.js", include_in_schema=False)
+async def serve_script():
+    """Serve frontend JavaScript."""
+    return FileResponse(FRONTEND_DIR / "script.js", media_type="application/javascript")
 
 
 # ---------------------------------------------------------------------------
